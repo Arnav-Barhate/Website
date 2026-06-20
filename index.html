@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Are We All Doomed?</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href="StyleSheets/styles.css" />
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+</head>
+
+<body>
+  <div class="bg-glow bg-glow--a"></div>
+  <div class="bg-glow bg-glow--b"></div>
+
+  <header class="nav-wrap">
+    <nav class="nav">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">◯</div>
+        <a class="brand-name" href="index.html">HYb</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a class="nav-link active" href="index.html">Home</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="kicker">Got your back • 2026 → now • Only the best</div>
+
+        <h1 class="hero-title">
+          Services? <span class="accent">all here!</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          We provide high quality testing for all of your software, including testing for quality assurance. So that you don't have to worry about the quality of your software.
+        </p>
+
+        <!-- <div class="hero-cta">
+          <a class="btn btn-primary" href="#tabs">Explore the evidence</a>
+          <a class="btn btn-ghost" href="raw-data.html">Jump to results</a>
+        </div> -->
+
+        <div class="hero-metrics">
+          <div class="metric">
+            <div class="metric-label">Quality Testing</div>
+            <div class="metric-value">1985–2019</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Recent era</div>
+            <div class="metric-value">2020–Present</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Frequency</div>
+            <div class="metric-value">Monthly</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="card hero-image-card">
+          <div class="card-top">
+            <div class="card-title">Global GPR Overview</div>
+            <div class="pill">Visual</div>
+          </div>
+
+          <div class="hero-image-wrap">
+            <img
+              src="../end_of_world.jpg"
+              alt="Dramatic end of world themed visual"
+              class="hero-image"
+            />
+            <div class="hero-image-overlay"></div>
+          </div>
+
+          <div class="card-bottom">
+            <div class="note">What the world is gonna look like in a few years - probably</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABS -->
+    <section class="tabs-section" id="tabs">
+      <div class="tabs-header">
+        <h2 class="section-title">What’s on this site</h2>
+        <p class="section-subtitle">
+          Click a tab. The page below updates completely, and then you can just scroll normally.
+        </p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="inspiration">Inspiration</button>
+        <button class="tab" data-tab="background">Background</button>
+        <button class="tab" data-tab="prelim-method">Preliminary Methodology</button>
+        <button class="tab" data-tab="prelim-results">Preliminary Results</button>
+      </div>
+    </section>
+
+    <!-- FULL PAGE TAB CONTENT -->
+    <section class="full-tab-content">
+      <!-- PANEL: Inspiration -->
+      <!-- PANEL: Inspiration -->
+<article class="panel active page-panel" id="panel-inspiration" data-panel="inspiration">
+
+  <section class="content-block inspiration-block">
+
+  <div class="inspiration-layout">
+
+    <div class="inspiration-text">
+
+      <h3 class="panel-title">Inspiration</h3>
+
+      <p class="panel-text">
+        We often hear phrases such as “I miss the good old days”, or “ten years ago was the peak”.
+        These statements are common in everyday conversation - but they raise an important question.
+        Are these beliefs simply artefacts of nostalgia and human memory bias, or is there measurable
+        evidence that the world is genuinely becoming more chaotic and unstable?
+      </p>
+
+      <p class="panel-text">
+        In this project we investigate that question objectively using real geopolitical risk data.
+        Instead of relying on anecdotes or impressions, we analyse long-term statistical patterns in the
+        Geopolitical Risk Index to determine whether the post-2020 world is meaningfully different from
+        previous decades.
+      </p>
+
+    </div>
+
+    <div class="inspiration-image-wrap">
+      <img
+        src="../images/thinking_emoji.png"
+        alt="Thinking emoji"
+        class="inspiration-image"
+      >
+    </div>
+
+  </div>
+
+</section>
+
+  <section class="content-block">
+    <div class="panel-grid">
+
+      <div class="mini-card">
+        <div class="mini-title">Core idea</div>
+        <div class="mini-text">
+          Compare historical and recent geopolitical risk levels using a consistent statistical
+          framework instead of relying on subjective impressions.
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <div class="mini-title">What we measure</div>
+        <div class="mini-text">
+          Changes in baseline risk, volatility, frequency of extreme months,
+          and structural trend shifts in global geopolitical risk data.
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <div class="mini-title">What we test</div>
+        <div class="mini-text">
+          Whether the “golden era” narrative holds up when evaluated
+          with quantitative evidence rather than nostalgia.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+</article>
+
+      <!-- PANEL: Background -->
+<article class="panel page-panel" id="panel-background" data-panel="background">
+
+  <section class="content-block">
+    <h3 class="panel-title">Background: The Geopolitical Risk Index</h3>
+
+    <p class="panel-text">
+      To evaluate global instability quantitatively, we use the Geopolitical Risk Index (GPR).
+      The GPR is a widely used economic and political indicator developed by
+      Dario Caldara and Matteo Iacoviello that measures geopolitical tensions
+      by analysing the frequency of specific risk-related terms in international
+      newspaper coverage.
+    </p>
+
+    <p class="panel-text">
+      The index is constructed using a dictionary-based search algorithm that scans
+      large databases of newspaper articles and calculates the share of articles
+      containing combinations of words related to geopolitical conflict.
+      This approach allows the index to capture the intensity of geopolitical risk
+      over time in a consistent and data-driven way.
+    </p>
+  </section>
+
+  <section class="content-block">
+
+    <h3 class="panel-title">Components of the GPR index</h3>
+
+    <p class="panel-text">
+      The GPR index is composed of eight underlying categories representing different
+      forms of geopolitical tension. These categories capture both potential threats
+      and actual conflict events.
+    </p>
+
+    <ul class="panel-list">
+
+      <li><span class="bullet"></span><b>War Threats (Category 1)</b> - references to the possibility of war or military confrontation.</li>
+
+      <li><span class="bullet"></span><b>Peace Threats (Category 2)</b> - breakdowns in diplomacy or negotiations that threaten peace agreements.</li>
+
+      <li><span class="bullet"></span><b>Military Buildups (Category 3)</b> - discussions of increased military spending or mobilisation.</li>
+
+      <li><span class="bullet"></span><b>Nuclear Threats (Category 4)</b> - references to nuclear weapons, proliferation, or nuclear tensions.</li>
+
+      <li><span class="bullet"></span><b>Terror Threats (Category 5)</b> - warnings or potential threats of terrorism.</li>
+
+      <li><span class="bullet"></span><b>Beginning of War (Category 6)</b> - reports of conflicts officially beginning.</li>
+
+      <li><span class="bullet"></span><b>Escalation of War (Category 7)</b> - events where existing conflicts intensify.</li>
+
+      <li><span class="bullet"></span><b>Terror Acts (Category 8)</b> - actual terrorist attacks or incidents.</li>
+
+    </ul>
+  </section>
+
+  <section class="content-block">
+
+    <h3 class="panel-title">How the index is constructed</h3>
+
+    <p class="panel-text">
+      Each of these eight categories contributes to the overall GPR score.
+      The categories are weighted using statistical models that estimate the
+      relative importance of different types of geopolitical events in shaping
+      global risk levels. These weights are derived from historical data and
+      calibrated using econometric modelling techniques.
+    </p>
+
+    <p class="panel-text">
+      The resulting index provides a monthly time series of geopolitical risk
+      levels, allowing researchers to analyse long-term trends and compare
+      different historical periods using consistent data.
+    </p>
+
+  </section>
+
+  <section class="content-block">
+
+    <div class="panel-grid">
+
+      <div class="mini-card">
+        <div class="mini-title">Time span used</div>
+        <div class="mini-text">
+          Monthly data from 1985 to the present.
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <div class="mini-title">Global analysis</div>
+        <div class="mini-text">
+          We analyse the global index to detect large-scale structural shifts.
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <div class="mini-title">Country analysis</div>
+        <div class="mini-text">
+          The same framework is then applied to 44 countries included in the GPR dataset.
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</article>
+
+      <!-- PANEL: Preliminary Methodology -->
+<article class="panel page-panel" id="panel-prelim-method" data-panel="prelim-method">
+  <section class="content-block">
+    <h3 class="panel-title">Preliminary methodology</h3>
+    <p class="panel-text">
+      Our approach is to treat the idea of a “golden era” as a measurable statistical claim rather than just a feeling.
+      We begin with the monthly global Geopolitical Risk Index (GPR), clean and filter the data so it consistently covers 1985 to the present, then split the timeline into two eras: a pre-2020 baseline and a post-2020 recent period.
+      From there, we apply a small set of connected analyses designed to answer slightly different versions of the same question: is the world now generally riskier, more unstable, more extreme, or structurally different from before?
+    </p>
+  </section>
+
+  <section class="content-block">
+    <h3 class="panel-title">Phase 1 pipeline (global)</h3>
+    <p class="panel-text">
+      The global methodology is built in layers. Instead of relying on a single summary statistic, we combine baseline level, volatility, extremes, and regime-shift analysis so the interpretation is more robust.
+      Each method is answering a different part of the overall research question.
+    </p>
+
+    <ul class="panel-list">
+      <li>
+        <span class="bullet"></span>
+        <span><b>Data preparation:</b> load the monthly GPR series, convert dates, clean invalid values, sort chronologically, and restrict the working dataset to 1985–present.</span>
+      </li>
+      <li>
+        <span class="bullet"></span>
+        <span><b>Era split:</b> define 1985–2019 as the “golden era” and 2020–present as the recent comparison period.</span>
+      </li>
+      <li>
+        <span class="bullet"></span>
+        <span><b>Baseline level:</b> compare the mean and median of each era with bootstrap confidence intervals.</span>
+      </li>
+      <li>
+        <span class="bullet"></span>
+        <span><b>Volatility:</b> compare standard deviation and rolling 60-month instability over time.</span>
+      </li>
+      <li>
+        <span class="bullet"></span>
+        <span><b>Extremes:</b> define high-risk months using golden-era percentile thresholds, then compare how often and how strongly those extremes appear later.</span>
+      </li>
+      <li>
+        <span class="bullet"></span>
+        <span><b>Trend shift:</b> fit separate pre-2020 and post-2020 linear trends and test whether the slope changes significantly.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="content-block methodology-columns">
+    <div class="mini-card">
+      <div class="mini-title">What the baseline test asks</div>
+      <div class="mini-text">
+        Are ordinary months now riskier on average, or does today only feel worse because of a few giant spikes?
+      </div>
+    </div>
+
+    <div class="mini-card">
+      <div class="mini-title">What the volatility test asks</div>
+      <div class="mini-text">
+        Even if average risk were similar, has the system itself become more unstable and harder to predict?
+      </div>
+    </div>
+
+    <div class="mini-card">
+      <div class="mini-title">What the extremes test asks</div>
+      <div class="mini-text">
+        Are months that would have counted as unusually severe in the golden era becoming more common now?
+      </div>
+    </div>
+
+    <div class="mini-card">
+      <div class="mini-title">What the trend shift asks</div>
+      <div class="mini-text">
+        Does 2020 behave like a real structural breakpoint, where the long-term direction of the series changes?
+      </div>
+    </div>
+  </section>
+
+  <section class="content-block">
+    <h3 class="panel-title">How the methods work together</h3>
+    <p class="panel-text">
+      These methods are intentionally complementary. Mean and median test the baseline level, volatility checks instability, extreme-value analysis checks tail risk, and piecewise trend analysis checks whether the system’s direction changed.
+      Taken together, they let us distinguish between a world that is merely noisy and a world that is genuinely becoming more dangerous in a deeper statistical sense.
+    </p>
+  </section>
+
+  <section class="content-block">
+    <h3 class="panel-title">Phase 3 expansion (countries)</h3>
+    <p class="panel-text">
+      After validating the pipeline globally, we extend the exact same framework to the 44 country-level GPR share series.
+      That means each country gets the same cleaning steps, the same era split, and the same set of plots and summaries.
+      This makes it possible to ask not only whether the world as a whole looks different, but also whether that shift is broadly distributed or concentrated in particular places.
+    </p>
+  </section>
+</article>
+
+      <!-- PANEL: Preliminary Results -->
+      <article class="panel page-panel" id="panel-prelim-results" data-panel="prelim-results">
+        <section class="content-block">
+          <h3 class="panel-title">Preliminary results (global)</h3>
+
+          <div class="doom-answer">
+            <span class="doom-q">Are we all doomed?</span>
+            <span class="doom-a">Yes… well, kinda.</span>
+          </div>
+
+          <p class="panel-text">
+            These three charts give the first answer: the post-2020 period does not just look noisy  it appears structurally higher and more fragile than the 1985–2019 baseline.
+          </p>
+        </section>
+
+        <!-- BIG MAIN PLOT -->
+        <section class="content-block">
+          <div class="inline-plot-card">
+            <div class="inline-plot-title">Global GPR  monthly values + rolling trends</div>
+            <div class="plot plot--iframe plot--xl">
+              <iframe
+                title="Global GPR trends"
+                class="plot-iframe"
+                src="../analysis_results/baseline_analysis_plotly/html/01_time_series_and_trend.html"
+                loading="lazy"
+                scrolling="no"
+                referrerpolicy="no-referrer"
+              ></iframe>
+            </div>
+          </div>
+
+          <p class="prelim-description">
+            This is the broadest view of the story. The raw monthly series is spiky, but the rolling means make the underlying shift easier to see. Instead of only a few isolated shocks, the recent period appears to sit on a higher overall level of risk than the older baseline.
+          </p>
+        </section>
+
+        <!-- ROW 1: TEXT LEFT, PLOT RIGHT -->
+        <section class="content-block prelim-row">
+          <div class="prelim-row-text">
+            <h4 class="prelim-row-title">Distribution shift</h4>
+            <p class="prelim-row-paragraph">
+              This chart compares the overall shape of the golden-era and recent-era distributions. The key point is that the recent period is not just defined by one or two dramatic spikes  the whole distribution has moved upward. That lines up with the statistics: the golden-era mean is 100.00 while the recent mean is 119.61, and the median rises from 90.61 to 114.91. In plain language, typical months after 2020 are riskier than typical months before it, which supports the idea that the change is broad rather than anecdotal.
+            </p>
+          </div>
+
+          <div class="prelim-row-plot">
+            <div class="inline-plot-card">
+              <div class="inline-plot-title">Distribution shift (Golden vs Recent)</div>
+              <div class="plot plot--iframe plot--row">
+                <iframe
+                  title="Distribution density"
+                  class="plot-iframe"
+                  src="../analysis_results/baseline_analysis_plotly/html/03_distribution_density_comparison.html"
+                  loading="lazy"
+                  scrolling="no"
+                  referrerpolicy="no-referrer"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ROW 2: PLOT LEFT, TEXT RIGHT -->
+        <section class="content-block prelim-row prelim-row--reverse">
+          <div class="prelim-row-plot">
+            <div class="inline-plot-card">
+              <div class="inline-plot-title">Piecewise trend around 2020</div>
+              <div class="plot plot--iframe plot--row">
+                <iframe
+                  title="Piecewise trend"
+                  class="plot-iframe"
+                  src="../analysis_results/baseline_analysis_plotly/html/07_piecewise_trend_lines.html"
+                  loading="lazy"
+                  scrolling="no"
+                  referrerpolicy="no-referrer"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+
+          <div class="prelim-row-text">
+            <h4 class="prelim-row-title">Trend shift around 2020</h4>
+            <p class="prelim-row-paragraph">
+              This plot asks whether 2020 marks a genuine structural change rather than just another bump in a noisy series. Before 2020, the fitted slope is slightly negative at about -0.015 GPR per month, which is basically flat to gently declining. After 2020, it becomes strongly positive at about +1.011 GPR per month, and the bootstrap confidence interval for the slope difference excludes zero. So, even at a preliminary level, the evidence suggests the recent era is not only higher  it is also moving in a more unstable direction.
+            </p>
+          </div>
+        </section>
+
+        <section class="content-block">
+          <div class="results-cta">
+            <a class="btn btn-primary" href="raw-data.html">See full results</a>
+            <a class="btn btn-ghost" href="methodology.html">Read full methodology</a>
+          </div>
+        </section>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-left">
+        <div class="footer-title">DoomIndex</div>
+        <div class="footer-sub">Data-driven stability vs nostalgia.</div>
+      </div>
+      <div class="footer-right">
+        <a href="raw-data.html">Results</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="actual_raw_data.html">Raw Data</a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
