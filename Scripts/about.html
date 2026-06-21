@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Methodology | DoomIndex</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+  <div class="bg-glow bg-glow--a"></div>
+  <div class="bg-glow bg-glow--b"></div>
+
+  <header class="nav-wrap">
+    <nav class="nav">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">⚠</div>
+        <a class="brand-name" href="index.html">DoomIndex</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="Services.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero methodology-hero">
+      <div class="hero-left">
+        <div class="kicker methodology-kicker">Research design • data cleaning • statistical framework</div>
+
+        <h1 class="hero-title">
+          Full <span class="accent">methodology</span>
+        </h1>
+
+        <p class="hero-subtitle methodology-subtitle">
+          This page explains exactly how the GPR dataset was collected, filtered, and analysed.
+          It covers both the global pipeline used in Phase 1 and the country-by-country expansion used in phase 2.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#method-sections">Read the framework</a>
+          <a class="btn btn-ghost" href="raw-data.html">See the results</a>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric">
+            <div class="metric-label">Global series</div>
+            <div class="metric-value">GPR</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Country series</div>
+            <div class="metric-value">44</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Resolution</div>
+            <div class="metric-value">Monthly</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="card">
+          <div class="card-top">
+            <div class="card-title">Method Overview</div>
+            <div class="pill">Phase 1 + phase 2</div>
+          </div>
+
+          <div class="method-overview">
+            <div class="overview-step">
+              <div class="overview-num">01</div>
+              <div>
+                <div class="overview-title">Collect</div>
+                <div class="overview-text">Load global GPR and country-level GPRC series from the provided CSV.</div>
+              </div>
+            </div>
+
+            <div class="overview-step">
+              <div class="overview-num">02</div>
+              <div>
+                <div class="overview-title">Clean</div>
+                <div class="overview-text">Parse dates, coerce numeric columns, remove invalid values, sort chronologically.</div>
+              </div>
+            </div>
+
+            <div class="overview-step">
+              <div class="overview-num">03</div>
+              <div>
+                <div class="overview-title">Split eras</div>
+                <div class="overview-text">Golden era: 1985–2019. Recent era: 2020–present.</div>
+              </div>
+            </div>
+
+            <div class="overview-step">
+              <div class="overview-num">04</div>
+              <div>
+                <div class="overview-title">Analyse</div>
+                <div class="overview-text">Baseline level, volatility, extremes, and piecewise trend change.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-bottom">
+            <div class="note">This is the full technical explanation, not the simplified homepage version.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION HEADER -->
+    <section class="tabs-section" id="method-sections">
+      <div class="tabs-header">
+        <h2 class="section-title">Method structure</h2>
+        <p class="section-subtitle methodology-section-subtitle">
+          The workflow starts with one cleaned monthly time series, then builds upward into a structured interpretation framework.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="full-tab-content">
+      <article class="page-panel active methodology-page">
+        <!-- 1 -->
+        <section class="content-block">
+          <h3 class="panel-title">1. Data collection</h3>
+          <p class="method-body">
+            The core dataset used in this project is the <b>Geopolitical Risk Index (GPR)</b>.
+            The GPR is a monthly index that measures the intensity of geopolitical risk by tracking the frequency of newspaper articles discussing war, tensions, threats, and other geopolitical crises.
+          </p>
+
+          <div class="panel-grid methodology-grid-3">
+            <div class="mini-card">
+              <div class="mini-title">Primary global variable</div>
+              <div class="mini-text method-small">
+                <b>GPR</b> — the recent global geopolitical risk index used for the baseline global analysis.
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-title">Country expansion</div>
+              <div class="mini-text method-small">
+                <b>GPRC_*</b> — country-level geopolitical risk share variables for 44 countries.
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-title">Time resolution</div>
+              <div class="mini-text method-small">
+                Monthly observations, which makes the analysis suitable for long-term structural comparison rather than daily event tracking.
+              </div>
+            </div>
+          </div>
+
+          <div class="figure-placeholder">
+            <img src="../images/gpr.png" alt="Bootstrap histogram of resampled statistics" class="method-image">
+          </div>
+        </section>
+
+        <!-- 2 -->
+        <section class="content-block">
+          <h3 class="panel-title">2. Data cleaning and preprocessing</h3>
+          <p class="method-body">
+            Before analysis, the raw CSV was cleaned so that the time series could be treated consistently.
+            The goal was to ensure each observation corresponded to a valid monthly value and that all analyses used the same filtered time range.
+          </p>
+
+          <ul class="panel-list methodology-list">
+            <li>
+              <span class="bullet"></span>
+              <span class="list-content"><b>Date parsing:</b> the <code>month</code> column was converted into datetime format.</span>
+            </li>
+            <li>
+              <span class="bullet"></span>
+              <span class="list-content"><b>Numeric conversion:</b> GPR values were converted to numeric and invalid entries were removed.</span>
+            </li>
+            <li>
+              <span class="bullet"></span>
+              <span class="list-content"><b>Chronological ordering:</b> the dataset was sorted from earliest to latest month.</span>
+            </li>
+            <li>
+              <span class="bullet"></span>
+              <span class="list-content"><b>Time filtering:</b> only observations from <b>January 1985 onwards</b> were retained.</span>
+            </li>
+          </ul>
+
+          <p class="method-body">
+            Let the monthly geopolitical risk value be represented as:
+          </p>
+
+          <div class="equation-card">
+            \[
+            G_t
+            \]
+          </div>
+
+          <p class="method-body">
+            where \(t\) denotes time measured in months.
+          </p>
+
+          <p class="method-body">
+            The final cleaned dataset is therefore a time series:
+          </p>
+
+          <div class="equation-card">
+            \[
+            \{G_1, G_2, G_3, \dots, G_n\}
+            \]
+          </div>
+
+          <p class="method-body">
+            where \(n\) is the total number of monthly observations.
+          </p>
+
+          <div class="figure-placeholder">
+            <img src="../images/clean_data.png" alt="Bootstrap histogram of resampled statistics" class="method-image">
+          </div>
+        </section>
+
+        <!-- 3 -->
+        <section class="content-block">
+          <h3 class="panel-title">3. Era definitions</h3>
+          <p class="method-body">
+            To make the comparison explicit, the timeline was split into two eras:
+          </p>
+
+          <div class="methodology-columns">
+            <div class="mini-card">
+              <div class="mini-title">Golden era</div>
+              <div class="mini-text method-small">
+                <b>1985–2019</b><br>
+                This is used as the baseline reference period and represents the pre-2020 world.
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-title">Recent era</div>
+              <div class="mini-text method-small">
+                <b>2020–present</b><br>
+                This is the comparison period used to test whether the world has become structurally riskier.
+              </div>
+            </div>
+          </div>
+
+          <p class="method-body">
+            This split was fixed before interpretation, which makes the framework more objective and avoids moving the breakpoint after already seeing the results.
+          </p>
+        </section>
+
+        <!-- 4 -->
+        <section class="content-block">
+          <h3 class="panel-title">4. Baseline risk level analysis</h3>
+          <p class="method-body">
+            The first question is whether the general level of geopolitical risk is higher after 2020.
+            Two summary statistics were used: the <b>mean</b> and the <b>median</b>.
+          </p>
+
+          <div class="equation-card">
+            \[
+            \mu = \frac{1}{n}\sum_{t=1}^{n} G_t
+            \]
+          </div>
+
+          <p class="method-body">
+            The mean measures the average level of risk, while the median measures the “typical month”.
+            Using both makes it possible to separate a broad upward shift from a change driven only by rare spikes.
+          </p>
+
+          <div class="panel-grid methodology-grid-2">
+            <div class="mini-card">
+              <div class="mini-title">Mean</div>
+              <div class="mini-text method-small">
+                Answers whether the overall average level of geopolitical risk has increased.
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-title">Median</div>
+              <div class="mini-text method-small">
+                Answers whether the ordinary month is riskier, even if extreme spikes are ignored.
+              </div>
+            </div>
+          </div>
+
+          <div class="method-plot-card">
+            <div class="method-plot-title">Baseline level comparison (global GPR)</div>
+            <div class="method-plot-wrap method-plot-medium">
+              <iframe
+                title="Baseline level comparison"
+                class="method-plot-iframe"
+                src="../analysis_results/baseline_analysis_plotly/html/06_baseline_level_comparison.html"
+                loading="lazy"
+                scrolling="no"
+                referrerpolicy="no-referrer"
+              ></iframe>
+            </div>
+            <div class="method-plot-caption">
+              This plot is used here because it visually matches the mean/median framework described above and shows the shift between the two eras directly.
+            </div>
+          </div>
+        </section>
+
+        <!-- 5 -->
+        <section class="content-block">
+          <h3 class="panel-title">5. Bootstrap confidence intervals</h3>
+          <p class="method-body">
+            Because the GPR time series is highly non-normal and contains large spikes, non-parametric bootstrap resampling was used instead of relying on normality assumptions.
+          </p>
+
+          <p class="method-body">
+            For each bootstrap sample \(b\), a statistic \(T_b\) is computed from a resampled dataset:
+          </p>
+
+          <div class="equation-card">
+            \[
+            T_b = f(G_1^*, G_2^*, \dots, G_n^*)
+            \]
+          </div>
+
+          <p class="method-body">
+            where \(G_t^*\) denotes the resampled data and \(f\) is the statistic of interest, such as the mean, median, or standard deviation.
+            Repeating this process many times produces an empirical distribution from which 95% confidence intervals can be estimated.
+          </p>
+
+
+        </section>
+
+        <!-- 6 -->
+        <section class="content-block">
+          <h3 class="panel-title">6. Volatility analysis</h3>
+          <p class="method-body">
+            Baseline level alone does not capture instability. A system may have a similar average level but fluctuate much more violently.
+            To capture this, volatility was measured using the standard deviation.
+          </p>
+
+          <div class="equation-card">
+            \[
+            \sigma = \sqrt{\frac{1}{n}\sum_{t=1}^{n}(G_t-\mu)^2}
+            \]
+          </div>
+
+          <p class="method-body">
+            In addition to overall era-wise volatility, a rolling 60-month standard deviation was computed.
+            This makes it possible to see how instability changes through time rather than compressing the entire period into one number.
+          </p>
+
+          <div class="method-plot-card">
+            <div class="method-plot-title">Rolling volatility of global GPR</div>
+            <div class="method-plot-wrap method-plot-large">
+              <iframe
+                title="Rolling volatility"
+                class="method-plot-iframe"
+                src="../analysis_results/baseline_analysis_plotly/html/04_instability_rolling_volatility.html"
+                loading="lazy"
+                scrolling="no"
+                referrerpolicy="no-referrer"
+              ></iframe>
+            </div>
+            <div class="method-plot-caption">
+              This figure belongs in the volatility section because it shows how the 60-month rolling standard deviation behaves through time rather than as a single summary number.
+            </div>
+          </div>
+        </section>
+
+        <!-- 7 -->
+        <section class="content-block">
+          <h3 class="panel-title">7. Extreme event analysis</h3>
+          <p class="method-body">
+            To identify unusually risky months, thresholds were defined using the golden-era distribution.
+            In particular, the 90th and 95th percentile cutoffs were used as reference points.
+          </p>
+
+          <div class="equation-card">
+            \[
+            G_t \ge Q_{0.95}^{(\text{golden})}
+            \]
+          </div>
+
+          <p class="method-body">
+            If a monthly value exceeds this threshold, it is classified as an extreme month relative to the pre-2020 baseline.
+            Two quantities were then measured: the frequency of such months, and the average exceedance above the threshold.
+          </p>
+
+          <ul class="panel-list methodology-list">
+            <li>
+              <span class="bullet"></span>
+              <span class="list-content"><b>Extreme frequency:</b> the proportion of months above the golden-era threshold.</span>
+            </li>
+            <li>
+              <span class="bullet"></span>
+              <span class="list-content"><b>Mean exceedance:</b> the average amount by which extreme months exceed the threshold.</span>
+            </li>
+          </ul>
+
+          <div class="method-plot-card">
+            <div class="method-plot-title">Extreme months per year</div>
+            <div class="method-plot-wrap method-plot-large">
+              <iframe
+                title="Extreme event frequency"
+                class="method-plot-iframe"
+                src="../analysis_results/baseline_analysis_plotly/html/05_extreme_event_frequency.html"
+                loading="lazy"
+                scrolling="no"
+                referrerpolicy="no-referrer"
+              ></iframe>
+            </div>
+            <div class="method-plot-caption">
+              This is the most natural supporting figure here because it directly visualises how often months cross the golden-era 95th percentile threshold.
+            </div>
+          </div>
+        </section>
+
+        <!-- 8 -->
+        <section class="content-block">
+          <h3 class="panel-title">8. Piecewise trend / regime-shift analysis</h3>
+          <p class="method-body">
+            To test whether 2020 corresponds to a genuine structural change, a piecewise linear trend model was fitted separately to the two eras.
+          </p>
+
+          <div class="equation-card">
+            \[
+            G_t = a + bt
+            \]
+          </div>
+
+          <p class="method-body">
+            Here, \(a\) is the intercept and \(b\) is the slope, which represents the average change in GPR per month.
+            Separate slopes were estimated before and after 2020.
+          </p>
+
+          <div class="equation-card">
+            \[
+            \Delta b = b_{\text{recent}} - b_{\text{golden}}
+            \]
+          </div>
+
+          <p class="method-body">
+            A bootstrap confidence interval was then constructed for the slope difference \(\Delta b\).
+            If the interval excludes zero, the change in slope is treated as evidence of a structural regime shift.
+          </p>
+
+          <div class="method-plot-card">
+            <div class="method-plot-title">Piecewise trend analysis around 2020</div>
+            <div class="method-plot-wrap method-plot-large">
+              <iframe
+                title="Piecewise trend analysis"
+                class="method-plot-iframe"
+                src="../analysis_results/baseline_analysis_plotly/html/07_piecewise_trend_lines.html"
+                loading="lazy"
+                scrolling="no"
+                referrerpolicy="no-referrer"
+              ></iframe>
+            </div>
+            <div class="method-plot-caption">
+              This plot belongs here because it visually represents the pre-2020 and post-2020 fitted slopes discussed in the equations above.
+            </div>
+          </div>
+        </section>
+
+        <!-- 9 -->
+        <section class="content-block">
+          <h3 class="panel-title">9. Interpretation framework</h3>
+          <p class="method-body">
+            The final interpretation is not based on one plot alone.
+            Instead, results are combined using a structured framework:
+          </p>
+
+          <div class="panel-grid methodology-grid-2">
+            <div class="mini-card">
+              <div class="mini-title">Mean ↑ and median ↑</div>
+              <div class="mini-text method-small">
+                Suggests a broad upward shift in baseline geopolitical risk.
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-title">Mean ↑ only</div>
+              <div class="mini-text method-small">
+                Suggests the increase is driven mainly by rare but intense extreme events.
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-title">Median ↑ only</div>
+              <div class="mini-text method-small">
+                Suggests ordinary months are riskier even if rare spikes are not the dominant cause.
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mini-title">Volatility / extremes ↑</div>
+              <div class="mini-text method-small">
+                Suggests the system is becoming more unstable, not just higher on average.
+              </div>
+            </div>
+          </div>
+
+          <div class="method-plot-card">
+            <div class="method-plot-title">Overall distribution shift</div>
+            <div class="method-plot-wrap method-plot-medium">
+              <iframe
+                title="Distribution shift"
+                class="method-plot-iframe"
+                src="../analysis_results/baseline_analysis_plotly/html/03_distribution_density_comparison.html"
+                loading="lazy"
+                scrolling="no"
+                referrerpolicy="no-referrer"
+              ></iframe>
+            </div>
+            <div class="method-plot-caption">
+              This figure is useful in the interpretation section because it summarises the broad shift in the two era distributions in one view.
+            </div>
+          </div>
+        </section>
+
+        <!-- 10 -->
+        <section class="content-block">
+          <h3 class="panel-title">10. phase 2: country-by-country expansion</h3>
+          <p class="method-body">
+            After completing the global Phase 1 pipeline, the same analysis structure was applied to each of the 44 country-level series.
+            This created a country-by-country extension of the same framework rather than a completely different methodology.
+          </p>
+
+          <ul class="panel-list methodology-list">
+            <li>
+              <span class="bullet"></span>
+              <span class="list-content"><b>Input series:</b> one country share series at a time, such as <code>GPRC_AUS</code>, <code>GPRC_USA</code>, or <code>GPRC_CHN</code>.</span>
+            </li>
+            <li>
+              <span class="bullet"></span>
+              <span class="list-content"><b>Same pipeline:</b> cleaning, era split, baseline comparison, volatility, extremes, and trend change.</span>
+            </li>
+            <li>
+              <span class="bullet"></span>
+              <span class="list-content"><b>Output:</b> a separate result folder for each country containing plots and a text summary.</span>
+            </li>
+          </ul>
+
+          <p class="method-body">
+            This extension makes it possible to compare whether the same structural shift appears globally and locally, rather than relying on a single aggregate story.
+          </p>
+
+          <div class="panel-grid methodology-grid-2">
+            <div class="figure-placeholder">
+              <img src="../images/44_countries.png" alt="Bootstrap histogram of resampled statistics" class="method-image">
+            </div>
+            <div class="method-plot-card method-plot-card--compact">
+              <div class="method-plot-title">Example country-level output</div>
+              <div class="method-plot-wrap method-plot-medium">
+                <iframe
+                  title="Country example plot"
+                  class="method-plot-iframe"
+                  src="../analysis_results/phase1_analysis_countries_plotly/AUS/01_time_series_and_trend.html"
+                  loading="lazy"
+                  scrolling="no"
+                  referrerpolicy="no-referrer"
+                ></iframe>
+              </div>
+              <div class="method-plot-caption">
+                This is a good example plot to include because it shows that the exact same structure can be applied to one country series, not just the global aggregate.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 11 -->
+        <section class="content-block">
+          <h3 class="panel-title">11. Current scope and next steps</h3>
+          <p class="method-body">
+            The completed work so far includes:
+          </p>
+
+          <ul class="panel-list methodology-list">
+            <li>
+              <span class="bullet"></span>
+              <span class="list-content">Global Phase 1 analysis on the main GPR series.</span>
+            </li>
+            <li>
+              <span class="bullet"></span>
+              <span class="list-content">Country-by-country phase 2 expansion using 44 country series.</span>
+            </li>
+            <li>
+              <span class="bullet"></span>
+              <span class="list-content">Static and interactive graph generation for website integration.</span>
+            </li>
+            <li>
+              <span class="bullet"></span>
+              <span class="list-content">A preliminary interpretation framework linking all outputs back to the main research question.</span>
+            </li>
+          </ul>
+
+          <p class="method-body">
+            The next stages will extend the same methodology to additional GPR columns and refine how the results are displayed and compared across the site.
+          </p>
+        </section>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-left">
+        <div class="footer-title">DoomIndex</div>
+        <div class="footer-sub">Data-driven stability vs nostalgia.</div>
+      </div>
+      <div class="footer-right">
+        <a href="raw-data.html">Results</a>
+        <a href="methodology.html">Methodology</a>
+        <a href="actual_raw_data.html">Raw Data</a>
+      </div>
+    </footer>
+  </main>
+
+  <style>
+    :root{
+      --font-display: "Dongle", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body{
+      font-family: var(--font-body);
+    }
+
+    .brand-name,
+    .nav-link,
+    .hero-title,
+    .section-title,
+    .panel-title,
+    .mini-title,
+    .feature-title,
+    .card-title,
+    .doom-q,
+    .doom-a,
+    .metric-value,
+    .metric-label,
+    .btn,
+    .pill,
+    .footer-title,
+    .overview-title,
+    .overview-num,
+    .overview-text,
+    .kicker,
+    .section-subtitle,
+    .method-plot-title {
+      font-family: var(--font-display);
+    }
+
+    .methodology-kicker,
+    .methodology-subtitle,
+    .method-body,
+    .method-small,
+    .figure-placeholder,
+    .list-content,
+    .footer-sub,
+    .note,
+    .method-plot-caption {
+      font-family: var(--font-body);
+    }
+
+    .methodology-hero{
+      align-items: stretch;
+    }
+
+    .methodology-subtitle{
+      font-size: 20px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.78);
+      max-width: 62ch;
+    }
+
+    .method-overview{
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .overview-step{
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .overview-num{
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      font-weight: 700;
+      background: rgba(124,255,178,0.10);
+      border: 1px solid rgba(124,255,178,0.22);
+      line-height: 1;
+    }
+
+    .overview-title{
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .overview-text{
+      font-size: 20px;
+      line-height: 1.15;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .methodology-page{
+      display: block !important;
+      padding: 0;
+      max-height: none !important;
+      overflow: visible !important;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    .method-body{
+      font-size: 16px;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.82);
+      margin: 0 0 14px;
+      letter-spacing: 0.01em;
+    }
+
+    .method-small{
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.76);
+      letter-spacing: 0.01em;
+    }
+
+    .methodology-grid-2{
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .methodology-grid-3{
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .equation-card{
+      margin: 16px 0;
+      padding: 18px 22px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      overflow-x: auto;
+    }
+
+    .figure-placeholder{
+      margin-top: 18px;
+      padding: 26px 18px;
+      border-radius: 20px;
+      border: 1px dashed rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.03);
+      color: rgba(255,255,255,0.60);
+      font-size: 15px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .method-plot-card{
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .method-plot-card--compact{
+      margin-top: 0;
+    }
+
+    .method-plot-title{
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .method-plot-wrap{
+      width: 100%;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(4,8,15,0.65);
+    }
+
+    .method-plot-medium{
+      height: 520px;
+    }
+
+    .method-plot-large{
+      height: 640px;
+    }
+
+    .method-plot-iframe{
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: transparent;
+    }
+
+    .method-plot-caption{
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.64);
+    }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+      color: rgba(124,255,178,0.95);
+      background: rgba(255,255,255,0.05);
+      padding: 2px 6px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+
+    .methodology-list{
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .methodology-list li{
+      display: grid;
+      grid-template-columns: 14px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .list-content{
+      display: block;
+      min-width: 0;
+      font-size: 16px;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.80);
+      letter-spacing: 0.01em;
+    }
+
+    .bullet{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-top: 9px;
+      background: rgba(124,255,178,0.85);
+      box-shadow: 0 0 18px rgba(124,255,178,0.20);
+    }
+        /* FOOTER */
+    .footer{
+      margin-top: 34px;
+      padding: 18px 0 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+    .footer-title{
+      font-size: 30px;
+      font-weight: 700;
+    }
+    .footer-sub{
+      font-size: 22px;
+      color: rgba(255,255,255,0.68);
+    }
+    .footer-right{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-right a{
+      color: rgba(255,255,255,0.70);
+      text-decoration: none;
+      font-size: 22px;
+    }
+    .footer-right a:hover{
+      color: var(--text);
+    }
+    mjx-container{
+      color: rgba(255,255,255,0.92) !important;
+      font-size: 1em !important;
+    }
+
+    .content-block{
+      margin-top: 18px;
+      padding: 24px;
+    }
+
+    @media (max-width: 980px){
+      .methodology-grid-2,
+      .methodology-grid-3,
+      .methodology-columns{
+        grid-template-columns: 1fr;
+      }
+
+      .overview-step{
+        grid-template-columns: 48px 1fr;
+      }
+
+      .overview-num{
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+      }
+
+      .content-block{
+        padding: 20px;
+      }
+
+      .method-plot-medium{
+        height: 460px;
+      }
+
+      .method-plot-large{
+        height: 540px;
+      }
+    }
+
+    @media (max-width: 600px){
+      .overview-title{
+        font-size: 24px;
+      }
+
+      .overview-text{
+        font-size: 18px;
+      }
+
+      .method-body,
+      .list-content,
+      .method-small{
+        font-size: 15px;
+      }
+
+      .figure-placeholder{
+        font-size: 14px;
+      }
+
+      .method-plot-title{
+        font-size: 24px;
+      }
+
+      .method-plot-medium,
+      .method-plot-large{
+        height: 420px;
+      }
+    }
+  </style>
+
+  <script src="script.js"></script>
+</body>
+</html>
