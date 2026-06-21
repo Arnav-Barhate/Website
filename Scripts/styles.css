@@ -254,8 +254,9 @@ body{
   border-bottom: 1px solid var(--border);
 }
 .card-title{
-  font-size: 26px;
+  font-size: 70px;
   font-weight: 700;
+  text-align: center;
 }
 .pill{
   font-size: 20px;
