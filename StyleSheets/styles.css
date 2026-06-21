@@ -7,7 +7,7 @@
   --muted: rgba(255,255,255,0.70);
   --text: rgba(255,255,255,0.92);
   --accent: #a5f0f0;
-  --accent2: #8A7CFF;
+  --accent2: rgba(124,255,178,0.7);
   --danger: #FF4D6D;
   --shadow: 0 18px 60px rgba(0,0,0,0.55);
   --radius: 18px;
@@ -154,9 +154,9 @@ body{
 }
 
 .hero-title{
-  margin: 10px 0 8px;
-  font-size: clamp(64px, 7vw, 96px);
-  line-height: 0.92;
+  margin: 40px 0 40px;
+  font-size: clamp(96px, 8vw, 150px);
+  line-height: 0.5;
   font-weight: 700;
 }
 .accent{
@@ -211,8 +211,8 @@ body{
 .hero-metrics{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 10px;
+  gap: 10px;  
+  margin-top: 60px;
 }
 .metric{
   padding: 12px 14px;
@@ -221,8 +221,11 @@ body{
   border: 1px solid var(--border);
 }
 .metric-label{
-  font-size: 20px;
-  color: rgba(255,255,255,0.68);
+  font-size: 50px;
+  color: var(--accent2);
+  text-align: center;
+  line-height: 0.7;
+  text-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
 }
 .metric-value{
   font-size: 28px;
@@ -505,8 +508,10 @@ body{
     }
 
     .full-tab-content{
-      margin-top: 18px;
+      margin-top: 18px; 
     }
+
+    /*
     .page-panel{
       display: none;
       padding: 0;
@@ -518,7 +523,7 @@ body{
     }
     .page-panel.active{
       display: block;
-    }
+    } */
 
     .content-block{
       margin-top: 18px;
@@ -534,7 +539,7 @@ body{
       grid-template-columns: 1fr 1fr;
       gap: 14px;
     }
-        .panel-list{
+        /* .panel-list{
       list-style: none;
       padding: 0;
       margin: 14px 0 0;
@@ -556,7 +561,7 @@ body{
       margin-top: 9px;
       background: #7CFFB2;
       flex-shrink: 0;
-    }
+    } */
 
     .plot-iframe{
       width:100%;
@@ -733,5 +738,5 @@ body{
  /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(124,255,178,0.7) rgba(0, 0, 0, 0.7);
+  scrollbar-color: var(--accent2) rgba(0, 0, 0, 0.7);
 }
