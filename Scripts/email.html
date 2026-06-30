@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email HYb | Consulting</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-glow bg-glow--a"></div>
+  <div class="bg-glow bg-glow--b"></div>
+
+  <header class="nav-wrap">
+    <nav class="nav">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">◯</div>
+        <a class="brand-name" href="../index.html">HYb</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a class="nav-link" href="../index.html">Home</a>
+        <a class="nav-link" href="Services.html">Services</a>
+        <a class="nav-link" href="about.html">About us</a>
+        <a class="nav-link active" href="email.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-left reveal">
+        <div class="kicker">Direct contact • configurable sending</div>
+        <h1 class="hero-title">
+          Email <span class="accent">HYb</span>
+        </h1>
+        <p class="hero-subtitle">
+          Send a message through the form and route it to the account you connect later. If you add a Formspree, EmailJS, or similar endpoint in the script, the message will send automatically.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="mailto:aybarhate12@gmail.com">Quick email</a>
+          <a class="btn btn-ghost" href="../index.html">Back home</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric"><div class="metric-label">Fast reply</div></div>
+          <div class="metric"><div class="metric-label">Direct route</div></div>
+          <div class="metric"><div class="metric-label">Easy setup</div></div>
+        </div>
+      </div>
+
+      <div class="hero-right reveal float-slow">
+        <div class="image-card image-card--hero">
+          <img src="https://placehold.co/1200x800/111827/68f5a3?text=Contact+HYb" alt="Contact HYb placeholder" />
+        </div>
+      </div>
+    </section>
+
+    <section class="content-block reveal">
+      <div class="panel-grid" style="grid-template-columns: 1fr 1.1fr; gap: 16px; align-items: stretch;">
+        <div class="mini-card">
+          <div class="mini-title">How the email page works</div>
+          <div class="mini-text" style="margin-top: 8px;">
+            The form can post to a connected service endpoint. If no endpoint is set yet, the page falls back to your mail app so you can still send a message.
+          </div>
+          <div class="mini-text" style="margin-top: 12px; color: rgba(255,255,255,0.62);">
+            To wire it up later, set the endpoint in the shared script to your form service URL.
+          </div>
+        </div>
+
+        <div class="card form-card">
+          <div class="card-top">
+            <div class="mini-title">Send a message</div>
+            <div class="pill">HYb</div>
+          </div>
+
+          <form class="contact-form" data-hyb-email-form>
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" />
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" />
+            </div>
+
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text" placeholder="What do you need help with?" />
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us a little about the project, problem, or support you need."></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Send email</button>
+            <div class="form-status" data-hyb-email-status></div>
+            <div class="form-note">
+              For automatic delivery, connect a form service account and add its endpoint in <a href="script.js" style="color: inherit;">script.js</a>.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-block reveal">
+      <h2 class="section-title">Other pages</h2>
+      <p class="panel-text">The site stays connected through the same navigation and footer across every page.</p>
+      <div class="results-cta">
+        <a class="btn btn-primary" href="Services.html">Services</a>
+        <a class="btn btn-ghost" href="about.html">About us</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-left">
+        <div class="footer-title">HYb Consulting</div>
+        <div class="footer-sub">Planning, testing, and delivery support.</div>
+        <div class="footer-sub">© Copyright 2026 HYB. All rights reserved.</div>
+      </div>
+      <div class="footer-right">
+        <a href="../index.html">Home</a>
+        <a href="Services.html">Services</a>
+        <a href="about.html">About us</a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -223,6 +223,22 @@ body{
   background: rgba(255,255,255,0.04);
   border: 1px solid var(--border);
 }
+.metric--selectable{
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+.metric--selectable:hover,
+.metric--selectable.active{
+  transform: translateY(-2px);
+  background: rgba(124,255,178,0.09);
+  border-color: rgba(124,255,178,0.22);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.28);
+}
 .metric-label{
   font-size: 50px;
   color: var(--accent2);
@@ -230,10 +246,19 @@ body{
   line-height: 1;
   /* text-shadow: 0 0 18px rgba(0, 0, 0, 0.35); */
 }
+.metric--selectable .metric-label{
+  text-align: left;
+  font-size: 32px;
+}
 .metric-value{
   font-size: 28px;
   font-weight: 700;
   line-height: 1;
+}
+.metric-copy{
+  font-size: 20px;
+  line-height: 1.08;
+  color: rgba(255,255,255,0.72);
 }
 
 /* CARD / PLOT */
@@ -509,6 +534,206 @@ body{
         radial-gradient(circle at 50% 20%, rgba(255,77,109,0.10), transparent 35%),
         radial-gradient(circle at 70% 70%, rgba(124,255,178,0.07), transparent 30%);
       pointer-events: none;
+    }
+
+    .focus-shell{
+      display: grid;
+      gap: 14px;
+    }
+
+    .focus-detail{
+      display: grid;
+      gap: 14px;
+      padding: 16px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .focus-image-wrap{
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      aspect-ratio: 16 / 10;
+      background: linear-gradient(135deg, rgba(124,255,178,0.08), rgba(138,124,255,0.10));
+    }
+
+    .focus-image{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.04) contrast(1.02) brightness(0.90);
+    }
+
+    .focus-copy{
+      display: grid;
+      gap: 8px;
+    }
+
+    .focus-title{
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .focus-text{
+      font-size: 22px;
+      line-height: 1.15;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .focus-points{
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .focus-points li{
+      display: grid;
+      grid-template-columns: 12px 1fr;
+      gap: 10px;
+      align-items: start;
+      font-size: 20px;
+      line-height: 1.12;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .focus-points li::before{
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 8px;
+      border-radius: 50%;
+      background: rgba(124,255,178,0.86);
+      box-shadow: 0 0 14px rgba(124,255,178,0.20);
+    }
+
+    .image-card{
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .image-card img{
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .form-card{
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-form{
+      display: grid;
+      gap: 12px;
+    }
+
+    .field{
+      display: grid;
+      gap: 6px;
+    }
+
+    .field label{
+      font-size: 20px;
+      line-height: 1;
+      color: rgba(255,255,255,0.78);
+    }
+
+    .field input,
+    .field textarea,
+    .field select{
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      padding: 12px 14px;
+      font: inherit;
+      font-size: 20px;
+      outline: none;
+    }
+
+    .field textarea{
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder{
+      color: rgba(255,255,255,0.42);
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus{
+      border-color: rgba(124,255,178,0.35);
+      box-shadow: 0 0 0 3px rgba(124,255,178,0.10);
+    }
+
+    .form-note{
+      font-size: 18px;
+      line-height: 1.4;
+      color: rgba(255,255,255,0.68);
+    }
+
+    .form-status{
+      font-size: 18px;
+      line-height: 1.3;
+      color: rgba(124,255,178,0.88);
+      min-height: 1.3em;
+    }
+
+    .image-card--hero img{
+      aspect-ratio: 16 / 10;
+    }
+
+    .image-card--tall img{
+      aspect-ratio: 4 / 5;
+    }
+
+    .reveal{
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 520ms ease, transform 520ms ease;
+    }
+
+    .reveal.is-visible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .float-slow{
+      animation: hybFloat 10s ease-in-out infinite;
+    }
+
+    .float-slower{
+      animation: hybFloat 14s ease-in-out infinite;
+    }
+
+    @keyframes hybFloat{
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .reveal,
+      .reveal.is-visible,
+      .float-slow,
+      .float-slower,
+      .metric--selectable{
+        transition: none;
+        animation: none;
+        transform: none;
+      }
     }
 
     .full-tab-content{

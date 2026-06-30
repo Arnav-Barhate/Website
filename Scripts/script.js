@@ -11,6 +11,170 @@ if (navToggle && navLinks) {
 }
 
 // -----------------------------
+// Lightweight UI config
+// -----------------------------
+const HYB_UI = {
+  revealRootMargin: "0px 0px -8% 0px",
+  defaultFocus: "what-we-do",
+  focusContent: {
+    "what-we-do": {
+      title: "What we do",
+      text: "We help teams turn rough ideas into something concrete, practical, and ready to move forward.",
+      image: "https://placehold.co/1200x800/0b1220/a5f0f0?text=What+we+do",
+      points: [
+        "Project planning and scope shaping",
+        "Clear feedback on the current product",
+        "Simple consulting without the noise"
+      ]
+    },
+    "what-we-help-with": {
+      title: "What we help with",
+      text: "We focus on the work that removes friction: testing, process clarity, and practical delivery support.",
+      image: "https://placehold.co/1200x800/111827/68f5a3?text=What+we+help+with",
+      points: [
+        "QA and testing support",
+        "Workflow cleanup and review",
+        "Delivery planning and prioritization"
+      ]
+    },
+    "how-we-work": {
+      title: "How we work",
+      text: "We keep the process lightweight: understand the problem, simplify the path, then deliver clear next steps.",
+      image: "https://placehold.co/1200x800/111827/8a7cff?text=How+we+work",
+      points: [
+        "Start with a short discovery conversation",
+        "Focus on the highest-value fixes first",
+        "Leave you with a usable plan"
+      ]
+    }
+  },
+  email: {
+    endpoint: "",
+    fallbackRecipient: "aybarhate12@gmail.com"
+  }
+};
+
+function initFocusSwitcher() {
+  const switcher = document.querySelector("[data-focus-switcher]");
+  const title = document.querySelector("[data-focus-title]");
+  const text = document.querySelector("[data-focus-text]");
+  const image = document.querySelector("[data-focus-image]");
+  const points = document.querySelector("[data-focus-points]");
+  const cards = document.querySelectorAll("[data-focus-option]");
+
+  if (!switcher || !title || !text || !image || !points || !cards.length) {
+    return;
+  }
+
+  const setFocus = (key) => {
+    const content = HYB_UI.focusContent[key] || HYB_UI.focusContent[HYB_UI.defaultFocus];
+
+    title.textContent = content.title;
+    text.textContent = content.text;
+    image.src = content.image;
+    image.alt = content.title;
+    points.innerHTML = content.points.map((point) => `<li>${point}</li>`).join("");
+
+    cards.forEach((card) => {
+      card.classList.toggle("active", card.getAttribute("data-focus-option") === key);
+      card.setAttribute("aria-pressed", card.getAttribute("data-focus-option") === key ? "true" : "false");
+    });
+  };
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => setFocus(card.getAttribute("data-focus-option")));
+  });
+
+  setFocus(HYB_UI.defaultFocus);
+}
+
+function initRevealAnimations() {
+  const items = document.querySelectorAll(".reveal");
+
+  if (!items.length) {
+    return;
+  }
+
+  if (!("IntersectionObserver" in window)) {
+    items.forEach((item) => item.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.16, rootMargin: HYB_UI.revealRootMargin });
+
+  items.forEach((item) => observer.observe(item));
+}
+
+function initContactForm() {
+  const form = document.querySelector("[data-hyb-email-form]");
+
+  if (!form) {
+    return;
+  }
+
+  const status = document.querySelector("[data-hyb-email-status]");
+  const submitButton = form.querySelector("button[type='submit']");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+    const subject = String(formData.get("subject") || "New HYb inquiry").trim();
+
+    if (!message) {
+      if (status) status.textContent = "Please add a message before sending.";
+      return;
+    }
+
+    if (submitButton) submitButton.disabled = true;
+
+    const mailtoSubject = encodeURIComponent(subject);
+    const mailtoBody = encodeURIComponent([
+      `Name: ${name || "Not provided"}`,
+      `Email: ${email || "Not provided"}`,
+      "",
+      message
+    ].join("\n"));
+
+    if (!HYB_UI.email.endpoint) {
+      window.location.href = `mailto:${HYB_UI.email.fallbackRecipient}?subject=${mailtoSubject}&body=${mailtoBody}`;
+      if (submitButton) submitButton.disabled = false;
+      if (status) status.textContent = "Opening your email app. Add a service endpoint later for direct sending.";
+      return;
+    }
+
+    try {
+      const response = await fetch(HYB_UI.email.endpoint, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData
+      });
+
+      if (!response.ok) {
+        throw new Error("Email submission failed");
+      }
+
+      form.reset();
+      if (status) status.textContent = "Sent. We will reply by email shortly.";
+    } catch (error) {
+      if (status) status.textContent = "Could not send right now. Check the endpoint and try again.";
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
+  });
+}
+
+// -----------------------------
 // Tabs logic
 // -----------------------------
 const tabs = document.querySelectorAll(".tab");
@@ -80,7 +244,15 @@ function baseDarkLayout(titleText, xTitle, yTitle, isHero = false) {
 // For now these just prove the layout + interactivity.
 // -----------------------------
 function renderPlaceholderCharts() {
+  if (!window.Plotly) {
+    return;
+  }
+
   // Hero chart
+  if (!document.getElementById("heroChart")) {
+    return;
+  }
+
   const heroX = [];
   const heroY = [];
   const startYear = 1985;
@@ -144,3 +316,6 @@ function renderPlaceholderCharts() {
 }
 
 document.addEventListener("DOMContentLoaded", renderPlaceholderCharts);
+document.addEventListener("DOMContentLoaded", initFocusSwitcher);
+document.addEventListener("DOMContentLoaded", initRevealAnimations);
+document.addEventListener("DOMContentLoaded", initContactForm);
