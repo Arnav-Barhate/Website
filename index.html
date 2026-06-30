@@ -16,7 +16,7 @@
   <div class="bg-glow bg-glow--a"></div>
   <div class="bg-glow bg-glow--b"></div>
 
-  <header class="nav-wrap">
+  <header class="nav-wrap reveal">
     <nav class="nav">
       <div class="brand">
         <div class="brand-mark" aria-hidden="true">◯</div>
@@ -37,77 +37,61 @@
   </header>
 
   <main class="container">
-    <section class="hero">
-      <div class="hero-left reveal">
-        <div class="kicker">HYb Consulting • Practical help for software teams</div>
+    <section class="hero-home reveal">
+      <div class="kicker" style="text-align: center;">
+        HYb Consulting • Practical help for software teams
+      </div>
 
-        <h1 class="hero-title">
-          Simple <span class="accent">support</span> for your next move
-        </h1>
+      <h1 class="hero-title-home" style="text-align: center;">
+        Simple <span class="accent">support</span> for your next move
+      </h1>
 
-        <p class="hero-subtitle">
-          We help small teams plan, build, test, and improve software without making the process more complicated than it needs to be
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="Scripts/Services.html">See services</a>
-          <a class="btn btn-ghost" href="Scripts/email.html">Email HYb</a>
-        </div>
+      <p class="hero-subtitle" style="margin: auto; text-align: center;">
+        We help small teams plan, build, test, and improve software without making the process more complicated than it needs to be
+      </p>
+      <div class="hero-cta" style="margin: auto;display: flex; justify-content: center; gap: 12px; margin-top: 24px;">
+        <a class="btn btn-primary" href="Scripts/Services.html">See services</a>
+        <a class="btn btn-ghost" href="Scripts/email.html">Email HYb</a>
+      </div>
 
 
-        <div class="hero-metrics">
+        <!-- <div class="hero-metrics">
           <div class="metric"><div class="metric-label">Strategy</div></div>
           <div class="metric"><div class="metric-label">Testing</div></div>
           <div class="metric"><div class="metric-label">Delivery</div></div>
+        </div> -->
+    </section>
+
+    <section class="content-block reveal">
+      <h2 class="section-title">What we do</h2>
+      <p class="section-subtitle">
+        We help teams turn rough ideas into something concrete, practical, and ready to move forward.
+      </p>
+
+      <div class="panel-grid" style="margin-top: 16px; grid-template-columns: 1.05fr 0.95fr; align-items: stretch;">
+        <div class="panel-grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <div class="focus-copy">
+            <ul class="focus-points" data-focus-points>
+              <li>Project planning and scope shaping</li>
+              <li>Clear feedback on the current product</li>
+              <li>Simple consulting without the noise</li>
+            </ul>
+          </div>
+
+
+          <div class="mini-card">
+            <div class="mini-title">QA and testing</div>
+            <div class="mini-text">Check the important parts early so problems are easier to find and fix.</div>
+          </div>
+
+          <div class="mini-card">
+            <div class="mini-title">Process support</div>
+            <div class="mini-text">Make the workflow simpler, steadier, and easier for your team to follow.</div>
+          </div>
         </div>
-      </div>
 
-      <div class="hero-right reveal float-slow">
-        <div class="card hero-image-card">
-          <div class="card-top">
-            <div class="card-title" style="font-size: 34px;">Choose a focus</div>
-            <div class="pill">Selectable</div>
-          </div>
-
-          <div class="focus-shell" style="padding: 16px;">
-            <div class="focus-detail">
-              <div class="focus-image-wrap image-card image-card--hero">
-                <img
-                  data-focus-image
-                  src="https://placehold.co/1200x800/0b1220/a5f0f0?text=What+we+do"
-                  alt="What we do"
-                  class="focus-image"
-                />
-              </div>
-
-              <div class="focus-copy">
-                <div class="focus-title" data-focus-title>What we do</div>
-                <div class="focus-text" data-focus-text>We help teams turn rough ideas into something concrete, practical, and ready to move forward.</div>
-                <ul class="focus-points" data-focus-points>
-                  <li>Project planning and scope shaping</li>
-                  <li>Clear feedback on the current product</li>
-                  <li>Simple consulting without the noise</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="hero-metrics">
-              <button class="metric metric--selectable active" type="button" data-focus-option="what-we-do" aria-pressed="true">
-                <div class="metric-label">What we do</div>
-                <div class="metric-copy">Start with planning and clarity.</div>
-              </button>
-              <button class="metric metric--selectable" type="button" data-focus-option="what-we-help-with" aria-pressed="false">
-                <div class="metric-label">What we help with</div>
-                <div class="metric-copy">Testing, workflow, and delivery support.</div>
-              </button>
-              <button class="metric metric--selectable" type="button" data-focus-option="how-we-work" aria-pressed="false">
-                <div class="metric-label">How we work</div>
-                <div class="metric-copy">Lightweight steps and clear next actions.</div>
-              </button>
-            </div>
-          </div>
-
-          <div class="card-bottom">
-            <div class="note">Contact: aybarhate12@gmail.com</div>
-          </div>
+        <div class="image-card image-card--tall float-slower">
+          <img src="https://placehold.co/900x1100/111827/68f5a3?text=Consulting+support" alt="Consulting support placeholder" />
         </div>
       </div>
     </section>

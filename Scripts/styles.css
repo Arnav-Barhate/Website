@@ -147,6 +147,12 @@ body{
   align-items: stretch;
 }
 
+.hero-home{
+  gap: 22px;
+  padding-top: 26px;
+  align-items: stretch;
+}
+
 .kicker{
   font-size: 22px;
   color: rgba(255,255,255,0.65);
@@ -159,12 +165,20 @@ body{
   line-height: 0.5;
   font-weight: 700;
 }
+
+.hero-title-home{
+  margin: 60px auto;
+  font-size: clamp(10px, 13vw, 20vw);
+  line-height: 0.65;
+  font-weight: 700;
+}
+
 .accent{
   color: var(--accent);
   text-shadow: 0 0 22px rgba(233, 26, 26, 0.18);
 }
 .hero-subtitle{
-  margin: 0 0 30px;
+  margin: left;
   font-size: 26px;
   color: rgba(255,255,255,0.78);
   line-height: 1.2;
@@ -702,13 +716,35 @@ body{
 
     .reveal{
       opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 520ms ease, transform 520ms ease;
+      transform: translateY(40px);
+      transition: opacity 850ms ease, transform 520ms ease;
     }
 
     .reveal.is-visible{
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .reveal-right{
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 850ms ease, transform 520ms ease;
+    }
+
+    .reveal-right.is-visible{
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal_left{
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 850ms ease, transform 520ms ease;
+    }
+
+    .reveal_left.is-visible{
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .float-slow{
