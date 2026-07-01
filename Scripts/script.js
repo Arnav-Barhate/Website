@@ -49,8 +49,10 @@ const HYB_UI = {
     }
   },
   email: {
-    endpoint: "",
-    fallbackRecipient: "aybarhate12@gmail.com"
+    endpoint: "/api/contact",
+    fallbackRecipient: "aybarhate12@gmail.com",
+    minSecondsToSubmit: 3,
+    maxMessageLength: 3000
   }
 };
 
@@ -121,6 +123,11 @@ function initContactForm() {
 
   const status = document.querySelector("[data-hyb-email-status]");
   const submitButton = form.querySelector("button[type='submit']");
+  const formStartField = form.querySelector("[data-hyb-form-start]");
+
+  if (formStartField) {
+    formStartField.value = String(Date.now());
+  }
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -130,9 +137,38 @@ function initContactForm() {
     const email = String(formData.get("email") || "").trim();
     const message = String(formData.get("message") || "").trim();
     const subject = String(formData.get("subject") || "New HYb inquiry").trim();
+    const company = String(formData.get("company") || "").trim();
+    const formStartRaw = String(formData.get("formStart") || "").trim();
+    const formStart = Number.parseInt(formStartRaw, 10);
+    const elapsedSeconds = Number.isFinite(formStart) ? (Date.now() - formStart) / 1000 : 0;
+
+    if (company) {
+      if (status) status.textContent = "Submission blocked.";
+      return;
+    }
+
+    if (elapsedSeconds < HYB_UI.email.minSecondsToSubmit) {
+      if (status) status.textContent = "Please wait a few seconds, then submit again.";
+      return;
+    }
+
+    if (!name) {
+      if (status) status.textContent = "Please add your name.";
+      return;
+    }
+
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+      if (status) status.textContent = "Please enter a valid email address.";
+      return;
+    }
 
     if (!message) {
       if (status) status.textContent = "Please add a message before sending.";
+      return;
+    }
+
+    if (message.length > HYB_UI.email.maxMessageLength) {
+      if (status) status.textContent = "Message is too long. Please shorten it and try again.";
       return;
     }
 
@@ -156,8 +192,16 @@ function initContactForm() {
     try {
       const response = await fetch(HYB_UI.email.endpoint, {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: formData
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          subject,
+          message
+        })
       });
 
       if (!response.ok) {

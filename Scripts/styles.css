@@ -21,6 +21,8 @@ body{
   background: radial-gradient(1200px 600px at 15% 10%, rgba(124,255,178,0.06), transparent 55%),
               radial-gradient(900px 500px at 85% 20%, rgba(138,124,255,0.07), transparent 60%),
               linear-gradient(180deg, var(--bg), var(--bg2));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--text);
   font-family: "Dongle", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   letter-spacing: 0.2px;
@@ -154,22 +156,23 @@ body{
 }
 
 .kicker{
-  font-size: 22px;
+  font-size: clamp(20px, 2.3vw, 10vw);
   color: rgba(255,255,255,0.65);
   letter-spacing: 0.6px;
 }
 
 .hero-title{
   margin: 40px 0 40px;
-  font-size: clamp(96px, 8vw, 150px);
+  font-size: clamp(96px, 10vw, 300px);
   line-height: 0.5;
   font-weight: 700;
 }
 
 .hero-title-home{
   margin: 60px auto;
-  font-size: clamp(10px, 13vw, 20vw);
+  font-size: clamp(10px, 8vw, 20vw);
   line-height: 0.65;
+  max-width: 20ch;
   font-weight: 700;
 }
 
@@ -177,9 +180,9 @@ body{
   color: var(--accent);
   text-shadow: 0 0 22px rgba(233, 26, 26, 0.18);
 }
-.hero-subtitle{
+.hero-subtitle{ 
   margin: left;
-  font-size: 26px;
+  font-size: clamp(20px, 2vw, 10vw);
   color: rgba(255,255,255,0.78);
   line-height: 1.2;
   max-width: 58ch;
@@ -593,34 +596,34 @@ body{
     }
 
     .focus-text{
-      font-size: 22px;
+      font-size: clamp(20px, 2.3vw, 10vw);
       line-height: 1.15;
       color: rgba(255,255,255,0.75);
     }
 
     .focus-points{
       display: grid;
-      gap: 8px;
-      margin: 0;
+      margin: left;
       padding: 0;
       list-style: none;
     }
 
     .focus-points li{
       display: grid;
-      grid-template-columns: 12px 1fr;
-      gap: 10px;
+      grid-template-columns: 3vw 1fr;
+      gap: 1vw;
       align-items: start;
-      font-size: 20px;
+      font-size: clamp(16px, 2.3vw, 50px);
       line-height: 1.12;
       color: rgba(255,255,255,0.72);
+      margin: auto 0;
     }
 
     .focus-points li::before{
       content: "";
       width: 8px;
       height: 8px;
-      margin-top: 8px;
+      margin: auto;
       border-radius: 50%;
       background: rgba(124,255,178,0.86);
       box-shadow: 0 0 14px rgba(124,255,178,0.20);
@@ -714,6 +717,10 @@ body{
       aspect-ratio: 4 / 5;
     }
 
+    .image-card--long img{
+      aspect-ratio: 16 / 10;
+    }
+
     .reveal{
       opacity: 0;
       transform: translateY(40px);
@@ -791,7 +798,7 @@ body{
     } */
 
     .content-block{
-      margin-top: 18px;
+      margin-top: 4vw;
       padding: 18px;
       border-radius: 24px;
       border: 1px solid rgba(255,255,255,0.10);

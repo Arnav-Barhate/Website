@@ -43,7 +43,7 @@
           Email <span class="accent">HYb</span>
         </h1>
         <p class="hero-subtitle">
-          Send a message through the form and route it to the account you connect later. If you add a Formspree, EmailJS, or similar endpoint in the script, the message will send automatically.
+          Send a message through a secure relay endpoint. Keep all mail provider keys on the server side so sensitive credentials never appear in browser code.
         </p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="mailto:aybarhate12@gmail.com">Quick email</a>
@@ -68,10 +68,10 @@
         <div class="mini-card">
           <div class="mini-title">How the email page works</div>
           <div class="mini-text" style="margin-top: 8px;">
-            The form can post to a connected service endpoint. If no endpoint is set yet, the page falls back to your mail app so you can still send a message.
+            The form posts to a same-origin API route by default. This lets you keep SMTP or provider credentials in environment variables on your host.
           </div>
           <div class="mini-text" style="margin-top: 12px; color: rgba(255,255,255,0.62);">
-            To wire it up later, set the endpoint in the shared script to your form service URL.
+            Never place provider secrets directly in this page or in script.js.
           </div>
         </div>
 
@@ -81,31 +81,34 @@
             <div class="pill">HYb</div>
           </div>
 
-          <form class="contact-form" data-hyb-email-form>
+          <form class="contact-form" data-hyb-email-form method="post" novalidate>
+            <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px;" />
+            <input type="hidden" name="formStart" value="" data-hyb-form-start />
+
             <div class="field">
               <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" />
+              <input id="name" name="name" type="text" placeholder="Your name" maxlength="120" required />
             </div>
 
             <div class="field">
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" />
+              <input id="email" name="email" type="email" placeholder="you@example.com" maxlength="180" required />
             </div>
 
             <div class="field">
               <label for="subject">Subject</label>
-              <input id="subject" name="subject" type="text" placeholder="What do you need help with?" />
+              <input id="subject" name="subject" type="text" placeholder="What do you need help with?" maxlength="160" />
             </div>
 
             <div class="field">
               <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="Tell us a little about the project, problem, or support you need."></textarea>
+              <textarea id="message" name="message" placeholder="Tell us a little about the project, problem, or support you need." maxlength="3000" required></textarea>
             </div>
 
             <button class="btn btn-primary" type="submit">Send email</button>
             <div class="form-status" data-hyb-email-status></div>
             <div class="form-note">
-              For automatic delivery, connect a form service account and add its endpoint in <a href="script.js" style="color: inherit;">script.js</a>.
+              This form is wired for a server-side relay endpoint. Provider credentials should only exist as host environment variables.
             </div>
           </form>
         </div>
