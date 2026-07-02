@@ -19,7 +19,7 @@ const HYB_UI = {
   focusContent: {
     "what-we-do": {
       title: "What we do",
-      text: "We help teams turn rough ideas into something concrete, practical, and ready to move forward.",
+      text: "We help teams of any size turn rough ideas into something concrete, practical, and ready to move forward.",
       image: "https://placehold.co/1200x800/0b1220/a5f0f0?text=What+we+do",
       points: [
         "Project planning and scope shaping",

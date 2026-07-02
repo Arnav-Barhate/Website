@@ -975,6 +975,7 @@ body{
   .nav-links.open{ display: flex; flex-direction: column; gap: 6px; }
   .nav-link{ width: 100%; }
 }
+
 /* ======================================
    GLOBAL SCROLLBAR (ALL PAGES)
 ====================================== */
