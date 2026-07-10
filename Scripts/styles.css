@@ -409,6 +409,7 @@ body{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
+  height: auto;
 }
 .mini-card{
   padding: 14px 14px;

@@ -18,33 +18,33 @@ const HYB_UI = {
   defaultFocus: "what-we-do",
   focusContent: {
     "what-we-do": {
-      title: "What we do",
-      text: "We help teams of any size turn rough ideas into something concrete, practical, and ready to move forward.",
-      image: "https://placehold.co/1200x800/0b1220/a5f0f0?text=What+we+do",
+      title: "Quality control",
+      text: "We help organisations deliver reliable, secure, high-quality technology solutions with confidence.",
+      image: "https://placehold.co/1200x800/0b1220/a5f0f0?text=Quality+control",
       points: [
-        "Project planning and scope shaping",
-        "Clear feedback on the current product",
-        "Simple consulting without the noise"
+        "Test strategy and test management",
+        "Functional, integration, and release testing",
+        "Quality control and quality assurance support"
       ]
     },
     "what-we-help-with": {
-      title: "What we help with",
-      text: "We focus on the work that removes friction: testing, process clarity, and practical delivery support.",
-      image: "https://placehold.co/1200x800/111827/68f5a3?text=What+we+help+with",
+      title: "Quality assurance",
+      text: "We cover the broader assurance work that keeps delivery steady, compliant, and ready for release.",
+      image: "https://placehold.co/1200x800/111827/68f5a3?text=Quality+assurance",
       points: [
-        "QA and testing support",
-        "Workflow cleanup and review",
-        "Delivery planning and prioritization"
+        "Performance testing",
+        "Security testing",
+        "Accessibility and compliance support"
       ]
     },
     "how-we-work": {
       title: "How we work",
-      text: "We keep the process lightweight: understand the problem, simplify the path, then deliver clear next steps.",
+      text: "We build quality into every stage of the project: discover the problem, plan the approach, execute with excellence, and support continuous improvement.",
       image: "https://placehold.co/1200x800/111827/8a7cff?text=How+we+work",
       points: [
-        "Start with a short discovery conversation",
-        "Focus on the highest-value fixes first",
-        "Leave you with a usable plan"
+        "Discover and understand",
+        "Plan and design",
+        "Execute with excellence"
       ]
     }
   },
