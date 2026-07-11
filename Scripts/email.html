@@ -59,15 +59,6 @@
     </section>
 
     <section class="content-block reveal">
-        <!-- <div class="mini-card">
-          <div class="mini-title">How the email page works</div>
-          <div class="mini-text" style="margin-top: 8px;">
-            The form posts to a same-origin API route by default. This lets you keep SMTP or provider credentials in environment variables on your host.
-          </div>
-          <div class="mini-text" style="margin-top: 12px; color: rgba(255,255,255,0.62);">
-            Never place provider secrets directly in this page or in script.js.
-          </div>
-        </div> -->
 
         <div class="card form-card">
           <div class="card-top">
@@ -75,7 +66,7 @@
             <div class="pill">HYb</div>
           </div>
 
-          <form class="contact-form" data-hyb-email-form method="post" novalidate>
+          <form class="contact-form" data-hyb-email-form action="/api/contact" method="post" accept-charset="UTF-8" novalidate>
             <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px;" />
             <input type="hidden" name="formStart" value="" data-hyb-form-start />
 

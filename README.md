@@ -3,6 +3,7 @@ A Website
 Safe contact form setup (no secret leaks)
 
 - The frontend form in Scripts/email.html sends messages to /api/contact.
+- If the API route is unavailable, the page falls back to the plain recipient address aybarhate12@gmail.com.
 - Do not place SMTP passwords, API keys, or private tokens in any HTML/CSS/JS file.
 - Keep secrets in host environment variables and send mail only from server-side code.
 

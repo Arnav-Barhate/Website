@@ -4,7 +4,20 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { name, email, subject, message } = req.body || {};
+  const rawBody = req.body;
+  let body = {};
+
+  if (rawBody && typeof rawBody === "object" && !Array.isArray(rawBody)) {
+    body = rawBody;
+  } else if (typeof rawBody === "string" && rawBody.trim()) {
+    try {
+      body = JSON.parse(rawBody);
+    } catch {
+      body = Object.fromEntries(new URLSearchParams(rawBody));
+    }
+  }
+
+  const { name, email, subject, message } = body;
 
   const safeName = String(name || "").trim();
   const safeEmail = String(email || "").trim();
